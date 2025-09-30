@@ -498,15 +498,6 @@
       line-height: 1.8;
       font-family: "SimSun", "Microsoft YaHei", serif;
     }
-    .statistics-img {
-      margin: 20px 0;
-    }
-    .statistics-img img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #444;
-      border-radius: 4px;
-    }
     
     /* 51.la 统计挂件样式优化 - 直角边框和白色文字 */
     .stats-container {
@@ -592,10 +583,10 @@
       <button class="agreement-close" id="closeAgreement">&times;</button>
       <h2>访问须知及免责声明</h2>
       <p>
-        本站部分内容来源于海外资源，涉及多元学术观点，内容仅供学术研究和参考。请您在使用本站内容时自觉遵守国家法律法规。
+        本站内容涉及多元学术观点，内容仅供学术研究和参考。请您在使用本站内容时自觉遵守所在地法律法规。
       </p>
       <p>
-        点击"同意访问"后将在新标签页中进入中文马克思主义文库（北京）镜像站；若选择"不同意离开"，系统将带您前往中国版 Bing。
+        点击"同意访问"后将在新标签页中进入中文马克思主义文库镜像站；若选择"不同意离开"，系统将带您前往Bing。
       </p>
       <div class="agreement-buttons">
         <button id="agreeBtn" class="agree-btn"><i class="fas fa-check-circle"></i> 同意访问</button>
@@ -737,13 +728,6 @@
   
   <!-- 页脚 -->
   <div class="footer">
-    <!-- 访问量统计展示 -->
-    <div class="statistics-img">
-      <a href="https://v6.51.la/s/xoP4MRdoCFf5XLg" target="_blank">
-        <img src="/statistics.svg" alt="访问统计" width="20" height="20">
-      </a>
-    </div>
-    
     <!-- 51la数据统计挂件 -->
     <div class="stats-container">
       <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3MMIkpQjaN9YuPlh/quote.js?theme=#333333,#FFFFFF,#FFFFFF,#CCCCCC,#666666,#FFFFFF,12&f=12"></script>
@@ -829,8 +813,8 @@
     });
     
     disagreeBtn.addEventListener('click', () => {
-      alert("您选择不同意访问，系统将带您前往中国版 Bing。");
-      window.open("https://cn.bing.com/", '_blank');
+      alert("您选择不同意访问，系统将带您前往Bing。");
+      window.open("https://www.bing.com/", '_blank');
     });
     
     closeAgreementBtn && closeAgreementBtn.addEventListener('click', () => {
