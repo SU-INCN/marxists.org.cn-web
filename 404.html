@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 页面未找到</title>
+    <style>
+        body {
+            font-family: "FangSong", sans-serif; /* 使用仿宋体 */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #333;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        a {
+            font-size: 1.2rem;
+            color: #007bff;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            color: #ff0000;
+            width: 50px;
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>404</h1>
+    <p>抱歉，您访问的页面未找到</p>
+    <p>页面将在 <span class="countdown">15</span> 秒后跳转到 <a href="https://marxists.org.cn/" target="_blank">中文马克思主义文库</a></p>
+    <a href="/">返回首页</a>
+    <a href="https://marxists.org.cn/" target="_blank">中文马克思主义文库</a>
+    <a href="https://incn.su/" target="_blank">苏在中</a>
+
+    <script>
+        let countdown = 15; // 设置倒计时秒数
+        const countdownElement = document.querySelector('.countdown');
+
+        // 更新倒计时的函数
+        function updateCountdown() {
+            countdownElement.textContent = countdown.toString().padStart(2, '0'); // 保持两位数显示
+            countdown--;
+            if (countdown < 0) {
+                clearInterval(interval); // 停止倒计时
+                window.location.href = "https://marxists.org.cn/"; // 跳转到目标页面
+            }
+        }
+
+        // 每秒更新一次倒计时
+        const interval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
