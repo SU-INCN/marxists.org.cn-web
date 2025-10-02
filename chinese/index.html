@@ -550,11 +550,25 @@
 
 <!-- 让所有链接在新标签页打开 -->
 <script>
-document.addEventListener("DOMContentLoaded", function(){
-  document.querySelectorAll("a[href]").forEach(function(a){
-    a.setAttribute("target", "_blank");
-  });
-});
+(function () {
+  function forceBlank() {
+    document.querySelectorAll('a[href]').forEach(a => {
+      a.setAttribute('target', '_blank');
+      if (a.getAttribute('rel') === 'noopener') {
+        a.removeAttribute('rel');
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', forceBlank);
+  } else {
+    forceBlank();
+  }
+
+  new MutationObserver(() => forceBlank())
+    .observe(document.body, { childList: true, subtree: true });
+})();
 </script>
 
 </body>
