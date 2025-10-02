@@ -6,7 +6,6 @@
     <title>中文马克思主义文库</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
@@ -29,29 +28,6 @@
             padding: 0 20px;
         }
         
-        /* 红色主题元素 */
-        .red-theme {
-            color: #8B0000;
-        }
-        
-        .red-bg {
-            background-color: #8B0000;
-            color: #fff;
-        }
-        
-        .light-red-bg {
-            background-color: #fff5f5;
-        }
-        
-        .red-border {
-            border: 1px solid #8B0000;
-        }
-        
-        .red-shadow {
-            box-shadow: 0 4px 8px rgba(139, 0, 0, 0.2);
-        }
-        
-        /* 顶部标题区域 */
         .site-header {
             text-align: center;
             padding: 2rem 0;
@@ -78,13 +54,6 @@
             letter-spacing: 2px;
         }
         
-        .site-subtitle {
-            font-size: 1.2rem;
-            color: #8B0000;
-            font-style: italic;
-        }
-        
-        /* 人物区域 */
         .figures-section {
             text-align: center;
             margin-bottom: 2rem;
@@ -92,25 +61,6 @@
             background-color: #fff;
             border-radius: 4px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #8B0000;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-        
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 10%;
-            width: 80%;
-            height: 2px;
-            background-color: #8B0000;
         }
         
         .figures-grid {
@@ -152,7 +102,6 @@
             font-weight: bold;
         }
         
-        /* 官方资源区域 */
         .official-links {
             text-align: center;
             margin: 2rem 0;
@@ -182,7 +131,6 @@
             text-decoration: underline;
         }
         
-        /* 导航区域 */
         .nav-section {
             margin-bottom: 2rem;
             padding: 1.5rem;
@@ -232,7 +180,6 @@
             color: white;
         }
         
-        /* 底部区域 */
         .bottom-text {
             margin-top: 3rem;
             padding: 2rem;
@@ -258,7 +205,6 @@
             text-decoration: underline;
         }
         
-        /* 装饰元素 */
         .decoration-line {
             height: 3px;
             background: linear-gradient(to right, transparent, #8B0000, transparent);
@@ -274,78 +220,6 @@
             text-align: center;
         }
         
-        /* 敏感人物提示弹窗 */
-        .warning-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .warning-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-        
-        .warning-title {
-            color: #8B0000;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #8B0000;
-            padding-bottom: 0.5rem;
-        }
-        
-        .warning-text {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            text-align: left;
-        }
-        
-        .warning-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .warning-btn {
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .warning-agree {
-            background-color: #8B0000;
-            color: white;
-        }
-        
-        .warning-agree:hover {
-            background-color: #a00;
-        }
-        
-        .warning-disagree {
-            background-color: #ddd;
-            color: #333;
-        }
-        
-        .warning-disagree:hover {
-            background-color: #ccc;
-        }
-        
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .site-title {
                 font-size: 2rem;
@@ -366,10 +240,6 @@
             .nav-links a {
                 font-size: 0.9rem;
                 padding: 0.3rem 0.6rem;
-            }
-            
-            .warning-buttons {
-                flex-direction: column;
             }
         }
         
@@ -410,15 +280,11 @@
 <body>
 <div class="content-wrapper">
 
-    <!-- 网站标题 -->
     <header class="site-header">
         <h1 class="site-title">中文马克思主义文库</h1>
-        <p class="site-subtitle">存档马克思主义和共产主义历史文献</p>
     </header>
 
-    <!-- 五人物区域 -->
     <section class="figures-section">
-        <h2 class="section-title">马克思主义经典作家</h2>
         <div class="figures-grid">
             <div class="figure-item">
                 <a title="马克思 Karl Marx" href="marx/index.htm" style="text-decoration: none; color: inherit;">
@@ -463,17 +329,14 @@
         </div>
     </section>
 
-    <!-- 官方资源 -->
     <div class="official-links">
-        <strong>官方资源：</strong>
-        <a href="https://ebook.dswxyjy.org.cn/ebooks/list/1" target="_blank">马克思列宁主义经典著作</a> |
-        <a href="https://ebook.dswxyjy.org.cn/ebooks/list/64" target="_blank">毛泽东著作</a> |
+        <strong>官方资源</strong>
+        <a href="https://ebook.dswxyjy.org.cn/ebooks/list/1" target="_blank">马克思列宁主义经典著作</a>
+        <a href="https://ebook.dswxyjy.org.cn/ebooks/list/64" target="_blank">毛泽东著作</a>
         <a href="https://www.dswxyjy.org.cn/GB/427277/444912/446738/447133/448302/index.html" target="_blank">毛泽东文献选读</a>
     </div>
 
-    <!-- 四个国际 -->
     <section class="nav-section">
-        <h3 class="nav-title">国际组织</h3>
         <div class="nav-links">
             <a href="first-international/index.htm">第一国际</a>
             <a href="second-international/index.htm">第二国际</a>
@@ -482,12 +345,9 @@
         </div>
     </section>
 
-    <!-- 装饰线 -->
     <div class="decoration-line"></div>
 
-    <!-- 中国革命家（含托派） -->
     <section class="nav-section">
-        <h3 class="nav-title">中国革命家</h3>
         <div class="nav-links">
             <a href="chenduxiu/index.htm">陈独秀</a>
             <a href="lidazhao/index.htm">李大钊</a>
@@ -498,10 +358,10 @@
             <a href="zhaoshiyan/index.htm">赵世炎</a>
             <a href="yundaiying/index.htm">恽代英</a>
             <a href="luozhanglong/index.htm">罗章龙</a>
-            <a href="linbiao/index.htm" class="sensitive-link">林彪</a>
-            <a href="wangming/index.htm" class="sensitive-link">王明</a>
+            <a href="linbiao/index.htm">林彪</a>
+            <a href="wangming/index.htm">王明</a>
             <a href="lilisan/index.htm">李立三</a>
-            <a href="zhangguotao/index.htm" class="sensitive-link">张国焘</a>
+            <a href="zhangguotao/index.htm">张国焘</a>
             <a href="jiangkanghu/index.htm">江亢虎</a>
             <a href="zhourensheng/index.htm">周仁生</a>
             <a href="jiangjunyang/index.htm">姜君羊</a>
@@ -509,39 +369,36 @@
             <a href="xieshan/index.htm">谢山</a>
             <a href="xiongandong/index.htm">熊安东</a>
             <a href="zhaofangju/index.htm">赵芳举</a>
-            <a href="pengshuzhi/index.htm" class="sensitive-link">彭述之</a>
-            <a href="chenbilan/index.htm" class="sensitive-link">陈碧兰</a>
-            <a href="zhengchaolin/index.htm" class="sensitive-link">郑超麟</a>
-            <a href="wangfanxi/index.htm" class="sensitive-link">王凡西</a>
-            <a href="louguohua/index.htm" class="sensitive-link">楼国华</a>
-            <a href="chenqichang/index.htm" class="sensitive-link">陈其昌</a>
-            <a href="yinkuan/index.htm" class="sensitive-link">尹宽</a>
-            <a href="wangduqing/index.htm" class="sensitive-link">王独清</a>
-            <a href="liurenjing/index.htm" class="sensitive-link">刘仁静</a>
-            <a href="caizhende/index.htm" class="sensitive-link">蔡振德</a>
-            <a href="liji/index.htm" class="sensitive-link">李季</a>
-            <a href="wujiyan/index.htm" class="sensitive-link">吴季严</a>
+            <a href="pengshuzhi/index.htm">彭述之</a>
+            <a href="chenbilan/index.htm">陈碧兰</a>
+            <a href="zhengchaolin/index.htm">郑超麟</a>
+            <a href="wangfanxi/index.htm">王凡西</a>
+            <a href="louguohua/index.htm">楼国华</a>
+            <a href="chenqichang/index.htm">陈其昌</a>
+            <a href="yinkuan/index.htm">尹宽</a>
+            <a href="wangduqing/index.htm">王独清</a>
+            <a href="liurenjing/index.htm">刘仁静</a>
+            <a href="caizhende/index.htm">蔡振德</a>
+            <a href="liji/index.htm">李季</a>
+            <a href="wujiyan/index.htm">吴季严</a>
         </div>
     </section>
 
-    <!-- 引用框 -->
     <div class="quote-box">
         "哲学家们只是用不同的方式解释世界，而问题在于改变世界。" —— 卡尔·马克思
     </div>
 
-    <!-- 国际共运 -->
     <section class="nav-section">
-        <h3 class="nav-title">国际共产主义运动</h3>
         <div class="nav-links">
             <a href="rosa-luxemburg/index.htm">罗莎·卢森堡</a>
             <a href="lafargue/index.htm">拉法格</a>
             <a href="jaures/index.htm">饶勒斯</a>
             <a href="liebknecht-w/index.htm">威廉·李卜克内西</a>
             <a href="beble/index.htm">倍倍尔</a>
-            <a href="kautsky/index.htm" class="sensitive-link">考茨基</a>
-            <a href="bernstein/index.htm" class="sensitive-link">伯恩斯坦</a>
+            <a href="kautsky/index.htm">考茨基</a>
+            <a href="bernstein/index.htm">伯恩斯坦</a>
             <a href="plekhanov/index.htm">普列汉诺夫</a>
-            <a href="bukharin/index.htm" class="sensitive-link">布哈林</a>
+            <a href="bukharin/index.htm">布哈林</a>
             <a href="gramsci/index.htm">葛兰西</a>
             <a href="clara-zetkin/index.htm">蔡特金</a>
             <a href="kollontai/index.htm">柯伦泰</a>
@@ -551,14 +408,14 @@
             <a href="voznesensky/index.htm">沃兹涅先斯基</a>
             <a href="krupskaya/index.htm">克鲁普斯卡娅</a>
             <a href="lunacharsky/index.htm">卢那察尔斯基</a>
-            <a href="zinoviev/index.htm" class="sensitive-link">季诺维也夫</a>
-            <a href="kamenev/index.htm" class="sensitive-link">加米涅夫</a>
+            <a href="zinoviev/index.htm">季诺维也夫</a>
+            <a href="kamenev/index.htm">加米涅夫</a>
             <a href="bogdanov/index.htm">波格丹诺夫</a>
             <a href="preobrazhensky/index.htm">普列奥布拉任斯基</a>
             <a href="axelrod/index.htm">阿克雪里罗得</a>
             <a href="shliapnikov/index.htm">施略普尼科夫</a>
             <a href="babushkin/index.htm">巴布石金</a>
-            <a href="radek/index.htm" class="sensitive-link">拉狄克</a>
+            <a href="radek/index.htm">拉狄克</a>
             <a href="roy/index.htm">罗易</a>
             <a href="sneevliet/index.htm">马林</a>
             <a href="john-reed/index.htm">约翰·里德</a>
@@ -570,16 +427,13 @@
             <a href="hoxha/index.htm">霍查</a>
             <a href="tito/index.htm">铁托</a>
             <a href="stalin/index.htm">斯大林</a>
-            <a href="guevara/index.htm">切·格瓦拉</a>
+            <a href="che-guevara/index.htm">切·格瓦拉</a>
         </div>
     </section>
 
-    <!-- 装饰线 -->
     <div class="decoration-line"></div>
 
-    <!-- 早期社会主义与无政府主义 -->
     <section class="nav-section">
-        <h3 class="nav-title">早期社会主义与无政府主义</h3>
         <div class="nav-links">
             <a href="proudon/index.htm">蒲鲁东</a>
             <a href="bakunin/index.htm">巴枯宁</a>
@@ -605,14 +459,11 @@
         </div>
     </section>
 
-    <!-- 引用框 -->
     <div class="quote-box">
         "全世界无产者，联合起来！" —— 《共产党宣言》
     </div>
 
-    <!-- 经典文献 -->
     <section class="nav-section">
-        <h3 class="nav-title">经典文献</h3>
         <div class="nav-links">
             <a href="marx-engels/index.htm">《马克思恩格斯全集》</a>
             <a href="marx-engels2/index.htm">《马克思恩格斯文集（十卷）》</a>
@@ -621,9 +472,7 @@
         </div>
     </section>
 
-    <!-- 参考图书 -->
     <section class="nav-section">
-        <h3 class="nav-title">参考图书</h3>
         <div class="nav-links">
             <a href="reference-books/index-leftwingculture.htm">左翼文化</a>
             <a href="reference-books/novel.htm">工人小说</a>
@@ -632,9 +481,8 @@
         </div>
     </section>
 
-    <!-- 底部信息 -->
     <div class="bottom-text">
-        <p>本网站属非谋利性质，旨在传播马克思主义和共产主义历史文献和参考资料。凡刊登的著作文献侵犯了作者、译者或版权持有人权益的，可来信联系本站删除。</p>
+        <p>本网站属非谋利性质，旨在收录马克思主义和共产主义历史文献和参考资料。凡刊登的著作文献侵犯了作者、译者或版权持有人权益的，可来信联系本站删除。</p>
         <p>阅读本站资料时，如发现文字错漏或疑点，敬请读者告知文库，以便我们更正。深表感谢！</p>
         <p>内容来源自： <a href="https://www.marxists.org" target="_blank">www.marxists.org</a></p>
         <p>文库镜像站：<a href="https://marxist.top" target="_blank">marxist.top</a> ︱
@@ -643,67 +491,7 @@
     </div>
 </div>
 
-<!-- 敏感人物访问提示弹窗 -->
-<div class="warning-modal" id="warningModal">
-    <div class="warning-content">
-        <h2 class="warning-title">学术研究提示</h2>
-        <div class="warning-text">
-            <p>您即将访问的内容涉及历史上存在争议的人物。这些人物在共产主义运动史上有不同评价和观点。</p>
-            <p>本站收录这些资料仅供学术研究和历史参考使用，不代表本站认同其观点或立场。</p>
-            <p>请您以科学的态度、批判的眼光阅读这些资料，坚持用马克思主义立场、观点、方法分析问题。</p>
-        </div>
-        <div class="warning-buttons">
-            <button class="warning-btn warning-agree" id="agreeBtn">我理解，继续访问</button>
-            <button class="warning-btn warning-disagree" id="disagreeBtn">取消访问</button>
-        </div>
-    </div>
-</div>
-
-<!-- 统计代码 -->
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"3MMIkpQjaN9YuPlh",ck:"3MMIkpQjaN9YuPlh"})</script>
-
-<script>
-    // 敏感人物链接处理
-    document.addEventListener('DOMContentLoaded', function() {
-        const sensitiveLinks = document.querySelectorAll('.sensitive-link');
-        const warningModal = document.getElementById('warningModal');
-        const agreeBtn = document.getElementById('agreeBtn');
-        const disagreeBtn = document.getElementById('disagreeBtn');
-        
-        let currentLink = null;
-        
-        // 为所有敏感链接添加点击事件
-        sensitiveLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                currentLink = this.href;
-                warningModal.style.display = 'flex';
-            });
-        });
-        
-        // 同意按钮事件
-        agreeBtn.addEventListener('click', function() {
-            warningModal.style.display = 'none';
-            if (currentLink) {
-                window.location.href = currentLink;
-            }
-        });
-        
-        // 不同意按钮事件
-        disagreeBtn.addEventListener('click', function() {
-            warningModal.style.display = 'none';
-            currentLink = null;
-        });
-        
-        // 点击模态框外部关闭
-        warningModal.addEventListener('click', function(e) {
-            if (e.target === warningModal) {
-                warningModal.style.display = 'none';
-                currentLink = null;
-            }
-        });
-    });
-</script>
 </body>
 </html>
