@@ -1,826 +1,551 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+
+<html lang="zh-cn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中文马克思主义文库 - 理论资源平台</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "SimSun", "SimHei", "Microsoft YaHei", serif;
-    }
-    :root {
-      --primary: #b71c1c;
-      --primary-dark: #8e0000;
-      --secondary: #2e7d32;
-      --light: #f5f5f5;
-      --dark: #212121;
-      --gray: #616161;
-      --transition: all 0.4s ease;
-    }
-    body {
-      background: linear-gradient(135deg, #f9f9f9, #f0f0f0);
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    .header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    .header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,100 L0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
-      background-size: cover;
-    }
-    .header-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .header h1 {
-      font-size: 2.8rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      letter-spacing: 1px;
-      font-weight: 700;
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .nav-bar {
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 0 20px;
-    }
-    .nav-link {
-      padding: 16px 25px;
-      text-decoration: none;
-      color: var(--dark);
-      font-weight: 500;
-      transition: var(--transition);
-      border-bottom: 3px solid transparent;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--primary);
-      border-bottom: 3px solid var(--primary);
-      background: rgba(183,28,28,0.05);
-    }
-    .main-container {
-      max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
-      flex: 1;
-      text-align: center;
-    }
-    .content-section {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      padding: 40px;
-      margin-bottom: 30px;
-    }
-    .section-title {
-      color: var(--primary);
-      font-size: 2rem;
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 3px solid var(--primary);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .intro {
-      margin-bottom: 20px;
-      font-size: 1.1rem;
-      color: #555;
-      text-align: left;
-      line-height: 1.8;
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    .intro p {
-      margin-bottom: 20px;
-    }
-    .intro a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px dashed var(--primary);
-      transition: var(--transition);
-    }
-    .intro a:hover {
-      color: var(--primary-dark);
-      border-bottom: 1px solid var(--primary-dark);
-    }
-    .intro-highlight {
-      background: rgba(183,28,28,0.08);
-      border-left: 4px solid var(--primary);
-      padding: 20px;
-      margin: 25px 0;
-      border-radius: 0 8px 8px 0;
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    .source-link {
-      text-align: center;
-      margin: 25px 0;
-      font-size: 0.95rem;
-      color: var(--gray);
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    .source-link a {
-      color: var(--secondary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .source-link a:hover {
-      text-decoration: underline;
-    }
-    .principles-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 25px 0;
-    }
-    .badge {
-      background: rgba(46,125,50,0.1);
-      color: var(--secondary);
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    .badge:hover {
-      background: rgba(46,125,50,0.2);
-      transform: translateY(-3px);
-    }
-    .btn-container {
-      text-align: center;
-      margin: 30px 0;
-    }
-    .btn-large {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 35px;
-      font-size: 1.1rem;
-      background: white;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: var(--transition);
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(183,28,28,0.2);
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-    .btn-large:hover {
-      background: rgba(183,28,28,0.05);
-      color: var(--primary-dark);
-      border-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(183,28,28,0.3);
-    }
-    .quotes-carousel {
-      position: relative;
-      overflow: hidden;
-      height: 300px;
-      margin: 20px 0;
-    }
-    .quote-slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      text-align: center;
-    }
-    .quote-slide.active {
-      opacity: 1;
-    }
-    .quote-text {
-      font-style: italic;
-      font-size: 1.8rem;
-      color: var(--primary);
-      max-width: 900px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .quote-author {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: var(--dark);
-      text-align: right;
-      width: 100%;
-      max-width: 900px;
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    .carousel-indicators {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-    }
-    .indicator {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(183,28,28,0.3);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-    .indicator.active {
-      background: var(--primary);
-      transform: scale(1.2);
-    }
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      max-width: 800px;
-      width: 90%;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      text-align: left;
-      font-family: "SimSun", "Microsoft YaHei", serif;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      position: sticky;
-      top: 0;
-      background: white;
-      padding: 10px 0;
-      z-index: 10;
-    }
-    .modal-header h2 {
-      font-size: 1.8rem;
-      color: var(--primary);
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .close-modal {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--gray);
-      transition: var(--transition);
-    }
-    .close-modal:hover {
-      color: var(--primary);
-    }
-    .agreement-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 3000;
-    }
-    .agreement-modal.active {
-      display: flex;
-    }
-    .agreement-content {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      max-width: 600px;
-      width: 90%;
-      text-align: left;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-      position: relative;
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    .agreement-content h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      color: var(--primary);
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .agreement-content p {
-      margin-bottom: 15px;
-      line-height: 1.8;
-      font-size: 0.95rem;
-    }
-    .agreement-buttons {
-      text-align: center;
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-    .agree-btn, .disagree-btn {
-      padding: 14px 35px;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: var(--transition);
-      margin: 0;
-      font-weight: 600;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-    }
-    .agree-btn {
-      background: var(--secondary);
-      color: white;
-      box-shadow: 0 4px 10px rgba(46,125,50,0.3);
-    }
-    .agree-btn:hover {
-      background: #1b5e20;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(46,125,50,0.4);
-    }
-    .disagree-btn {
-      background: #b71c1c;
-      color: white;
-      box-shadow: 0 4px 10px rgba(183,28,28,0.3);
-    }
-    .disagree-btn:hover {
-      background: #8e0000;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(183,28,28,0.4);
-    }
-    .agreement-close {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--gray);
-      transition: var(--transition);
-    }
-    .agreement-close:hover {
-      color: var(--primary);
-    }
-    .contact-horizontal {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 40px 0;
-      flex-wrap: wrap;
-    }
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      min-width: 300px;
-      transition: var(--transition);
-    }
-    .contact-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    }
-    .contact-icon {
-      width: 60px;
-      height: 60px;
-      background: rgba(183,28,28,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      color: var(--primary);
-    }
-    .contact-details {
-      text-align: left;
-    }
-    .contact-details h4 {
-      color: var(--dark);
-      margin-bottom: 10px;
-      font-family: "SimHei", "Microsoft YaHei", sans-serif;
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 5px;
-    }
-    .contact-details p {
-      font-family: "SimSun", "Microsoft YaHei", serif;
-      margin: 8px 0;
-    }
-    .contact-name {
-      font-weight: bold;
-      color: var(--primary);
-      font-size: 1.1rem;
-    }
-    .contact-email {
-      color: var(--secondary);
-      font-weight: 500;
-    }
-    .contact-role {
-      color: var(--gray);
-      font-size: 0.95rem;
-    }
-    .footer {
-      background: #222;
-      color: #e0e0e0;
-      padding: 40px 20px 20px;
-      margin-top: auto;
-      text-align: center;
-    }
-    .footer p {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      font-family: "SimSun", "Microsoft YaHei", serif;
-    }
-    
-    /* 51.la 统计挂件样式优化 - 直角边框和白色文字 */
-    .stats-container {
-      background: #333;
-      border-radius: 0; /* 直角边框 */
-      padding: 15px;
-      margin: 25px auto;
-      max-width: 600px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
-    .stats-container .LA-DATA-WIDGET {
-      color: white !important;
-      font-family: "SimSun", "Microsoft YaHei", serif !important;
-    }
-    .stats-container .LA-DATA-WIDGET .la-widget-title {
-      color: #FFFFFF !important; /* 白色标题 */
-      font-weight: bold !important;
-      font-size: 1.2rem !important;
-    }
-    .stats-container .LA-DATA-WIDGET .la-widget-value {
-      color: #4CAF50 !important; /* 绿色数值 */
-      font-weight: bold !important;
-      font-size: 1.1rem !important;
-    }
-    .stats-container .LA-DATA-WIDGET .la-widget-label {
-      color: #e0e0e0 !important; /* 浅灰色标签 */
-    }
-    .stats-container .LA-DATA-WIDGET .la-widget-divider {
-      background-color: #666 !important; /* 分隔线颜色 */
-    }
-    
-    /* 其他页面元素的直角边框 */
-    .content-section, .contact-item, .modal, 
-    .agreement-content {
-      border-radius: 0 !important; /* 所有元素直角边框 */
-    }
-    
-    @media (max-width: 992px) {
-      .header h1 { font-size: 2.4rem; }
-      .content-section { padding: 30px; }
-      .section-title { font-size: 1.8rem; }
-      .quote-text { font-size: 1.5rem; }
-      .modal { max-width: 90%; }
-      .agreement-buttons {
-        flex-direction: column;
-        gap: 15px;
-      }
-      .agree-btn, .disagree-btn {
-        width: 100%;
-      }
-    }
-    @media (max-width: 768px) {
-      .principles-badges {
-        flex-direction: column;
-        align-items: center;
-      }
-      .contact-horizontal {
-        flex-direction: column;
-        align-items: center;
-      }
-      .stats-container {
-        padding: 10px;
-        margin: 15px;
-      }
-    }
-    @media (max-width: 480px) {
-      .header h1 { font-size: 1.7rem; }
-      .nav-link { padding: 12px 15px; font-size: 0.95rem; }
-      .quote-text { font-size: 1.2rem; }
-      .intro {
-        font-size: 1rem;
-      }
-      .contact-item {
-        min-width: 100%;
-      }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>中文马克思主义文库</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "FangSong", "仿宋", "STFangsong", "华文仿宋", serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f9f3f3;
+            background-image: linear-gradient(to bottom, #f9f3f3, #fff 200px);
+            padding: 0;
+            margin: 0;
+        }
+        
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .site-header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .site-header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background-color: #8B0000;
+        }
+        
+        .site-title {
+            font-size: 2.5rem;
+            color: #8B0000;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .figures-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .figures-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .figure-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+            transition: transform 0.3s;
+        }
+        
+        .figure-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .figure-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #8B0000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .figure-name {
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .official-links {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .official-links strong {
+            display: block;
+            margin-bottom: 1rem;
+            color: #8B0000;
+            font-size: 1.2rem;
+        }
+        
+        .official-links a {
+            margin: 0 0.8rem;
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .official-links a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+        
+        .nav-section {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #8B0000;
+            text-align: center;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .nav-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 20%;
+            width: 60%;
+            height: 2px;
+            background-color: #8B0000;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-links a {
+            color: #8B0000;
+            text-decoration: none;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #8B0000;
+            border-radius: 4px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            background-color: #8B0000;
+            color: white;
+        }
+        
+        .bottom-text {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.95rem;
+            text-align: center;
+            border-top: 3px solid #8B0000;
+        }
+        
+        .bottom-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .bottom-text a {
+            color: #8B0000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+        
+        .decoration-line {
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8B0000, transparent);
+            margin: 1.5rem 0;
+        }
+        
+        .quote-box {
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            background-color: #fff5f5;
+            border-left: 4px solid #8B0000;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .site-title {
+                font-size: 2rem;
+            }
+            
+            .figures-grid {
+                gap: 1rem;
+            }
+            
+            .figure-item {
+                width: 80px;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.6rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .figures-grid {
+                gap: 0.8rem;
+            }
+            
+            .figure-item {
+                width: 70px;
+            }
+            
+            .figure-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .figure-name {
+                font-size: 0.8rem;
+            }
+            
+            .nav-links {
+                gap: 0.4rem;
+            }
+            
+            .nav-links a {
+                font-size: 0.85rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- 用户同意访问须知与免责声明弹窗 -->
-  <div class="agreement-modal" id="agreementModal">
-    <div class="agreement-content">
-      <button class="agreement-close" id="closeAgreement">&times;</button>
-      <h2>访问须知及免责声明</h2>
-      <p>
-        本站内容涉及多元学术观点，内容仅供学术研究和参考。请您在使用本站内容时自觉遵守所在地法律法规。
-      </p>
-      <p>
-        点击"同意访问"后将在新标签页中进入中文马克思主义文库镜像站；若选择"不同意离开"，系统将带您前往Bing。
-      </p>
-      <div class="agreement-buttons">
-        <button id="agreeBtn" class="agree-btn"><i class="fas fa-check-circle"></i> 同意访问</button>
-        <button id="disagreeBtn" class="disagree-btn"><i class="fas fa-times-circle"></i> 不同意离开</button>
-      </div>
+<div class="content-wrapper">
+<header class="site-header">
+<h1 class="site-title">中文马克思主义文库</h1>
+</header>
+<section class="figures-section">
+<div class="figures-grid">
+<div class="figure-item">
+<a href="marx/index.htm" style="text-decoration: none; color: inherit;" title="马克思 Karl Marx">
+<div class="figure-icon">
+<i class="fas fa-book"></i>
+</div>
+<div class="figure-name">马克思</div>
+</a>
+</div>
+<div class="figure-item">
+<a href="engels/index.htm" style="text-decoration: none; color: inherit;" title="恩格斯 Engels">
+<div class="figure-icon">
+<i class="fas fa-pen-fancy"></i>
+</div>
+<div class="figure-name">恩格斯</div>
+</a>
+</div>
+<div class="figure-item">
+<a href="lenin/index.htm" style="text-decoration: none; color: inherit;" title="列宁 Lenin">
+<div class="figure-icon">
+<i class="fas fa-balance-scale"></i>
+</div>
+<div class="figure-name">列宁</div>
+</a>
+</div>
+<div class="figure-item">
+<a href="maozedong/" style="text-decoration: none; color: inherit;" title="毛泽东">
+<div class="figure-icon">
+<i class="fas fa-star"></i>
+</div>
+<div class="figure-name">毛泽东</div>
+</a>
+</div>
+<div class="figure-item">
+<a href="trotsky/index.htm" style="text-decoration: none; color: inherit;" title="托洛茨基 Trotsky">
+<div class="figure-icon">
+<i class="fas fa-glasses"></i>
+</div>
+<div class="figure-name">托洛茨基</div>
+</a>
+</div>
+</div>
+</section>
+<div class="official-links">
+<strong>官方资源</strong>
+<a href="https://ebook.dswxyjy.org.cn/ebooks/list/1" target="_blank">马克思列宁主义经典著作</a>
+<a href="https://ebook.dswxyjy.org.cn/ebooks/list/64" target="_blank">毛泽东著作</a>
+<a href="https://www.dswxyjy.org.cn/GB/427277/444912/446738/447133/448302/index.html" target="_blank">毛泽东文献选读</a>
+</div>
+<section class="nav-section">
+<div class="nav-links">
+<a href="first-international/index.htm">第一国际</a>
+<a href="second-international/index.htm">第二国际</a>
+<a href="communist-international/index.htm">第三国际</a>
+<a href="fourth-international/index.htm">第四国际</a>
+</div>
+</section>
+<div class="decoration-line"></div>
+<section class="nav-section">
+<div class="nav-links">
+<a href="chenduxiu/index.htm">陈独秀</a>
+<a href="lidazhao/index.htm">李大钊</a>
+<a href="dengzhongxia/index.htm">邓中夏</a>
+<a href="quqiubai/index.htm">瞿秋白</a>
+<a href="caihesen/index.htm">蔡和森</a>
+<a href="xiangjingyu/index.htm">向警予</a>
+<a href="zhaoshiyan/index.htm">赵世炎</a>
+<a href="yundaiying/index.htm">恽代英</a>
+<a href="luozhanglong/index.htm">罗章龙</a>
+<a href="linbiao/index.htm">林彪</a>
+<a href="wangming/index.htm">王明</a>
+<a href="lilisan/index.htm">李立三</a>
+<a href="zhangguotao/index.htm">张国焘</a>
+<a href="jiangkanghu/index.htm">江亢虎</a>
+<a href="zhourensheng/index.htm">周仁生</a>
+<a href="jiangjunyang/index.htm">姜君羊</a>
+<a href="liupingmei/index.htm">刘平梅</a>
+<a href="xieshan/index.htm">谢山</a>
+<a href="xiongandong/index.htm">熊安东</a>
+<a href="zhaofangju/index.htm">赵芳举</a>
+<a href="pengshuzhi/index.htm">彭述之</a>
+<a href="chenbilan/index.htm">陈碧兰</a>
+<a href="zhengchaolin/index.htm">郑超麟</a>
+<a href="wangfanxi/index.htm">王凡西</a>
+<a href="louguohua/index.htm">楼国华</a>
+<a href="chenqichang/index.htm">陈其昌</a>
+<a href="yinkuan/index.htm">尹宽</a>
+<a href="wangduqing/index.htm">王独清</a>
+<a href="liurenjing/index.htm">刘仁静</a>
+<a href="caizhende/index.htm">蔡振德</a>
+<a href="liji/index.htm">李季</a>
+<a href="wujiyan/index.htm">吴季严</a>
+</div>
+</section>
+<div class="quote-box">
+        "哲学家们只是用不同的方式解释世界，而问题在于改变世界。" —— 卡尔·马克思
     </div>
-  </div>
-  
-  <!-- 页头 -->
-  <div class="header">
-    <div class="header-content">
-      <h1>中文马克思主义文库</h1>
+<section class="nav-section">
+<div class="nav-links">
+<a href="rosa-luxemburg/index.htm">罗莎·卢森堡</a>
+<a href="lafargue/index.htm">拉法格</a>
+<a href="jaures/index.htm">饶勒斯</a>
+<a href="liebknecht-w/index.htm">威廉·李卜克内西</a>
+<a href="beble/index.htm">倍倍尔</a>
+<a href="kautsky/index.htm">考茨基</a>
+<a href="bernstein/index.htm">伯恩斯坦</a>
+<a href="plekhanov/index.htm">普列汉诺夫</a>
+<a href="bukharin/index.htm">布哈林</a>
+<a href="gramsci/index.htm">葛兰西</a>
+<a href="clara-zetkin/index.htm">蔡特金</a>
+<a href="kollontai/index.htm">柯伦泰</a>
+<a href="frunze/index.htm">伏龙芝</a>
+<a href="vorovsky/index.htm">沃罗夫斯基</a>
+<a href="riazanov/index.htm">梁赞诺夫</a>
+<a href="voznesensky/index.htm">沃兹涅先斯基</a>
+<a href="krupskaya/index.htm">克鲁普斯卡娅</a>
+<a href="lunacharsky/index.htm">卢那察尔斯基</a>
+<a href="zinoviev/index.htm">季诺维也夫</a>
+<a href="kamenev/index.htm">加米涅夫</a>
+<a href="bogdanov/index.htm">波格丹诺夫</a>
+<a href="preobrazhensky/index.htm">普列奥布拉任斯基</a>
+<a href="axelrod/index.htm">阿克雪里罗得</a>
+<a href="shliapnikov/index.htm">施略普尼科夫</a>
+<a href="babushkin/index.htm">巴布石金</a>
+<a href="radek/index.htm">拉狄克</a>
+<a href="roy/index.htm">罗易</a>
+<a href="sneevliet/index.htm">马林</a>
+<a href="john-reed/index.htm">约翰·里德</a>
+<a href="mariategui/index.htm">马里亚特吉</a>
+<a href="kotoku-shusui/index.htm">幸德秋水</a>
+<a href="sen-katayama/index.htm">片山潜</a>
+<a href="nin/index.htm">安德烈乌·宁</a>
+<a href="maurin/index.htm">毛林</a>
+<a href="hoxha/index.htm">霍查</a>
+<a href="tito/index.htm">铁托</a>
+<a href="stalin/index.htm">斯大林</a>
+<a href="guevara/index.htm">切·格瓦拉</a>
+</div>
+</section>
+<div class="decoration-line"></div>
+<section class="nav-section">
+<div class="nav-links">
+<a href="proudon/index.htm">蒲鲁东</a>
+<a href="bakunin/index.htm">巴枯宁</a>
+<a href="kropotkin/index.htm">克鲁泡特金</a>
+<a href="makhno/index.htm">马赫诺</a>
+<a href="emma-goldman/index.htm">爱玛·戈德曼</a>
+<a href="liushifu/index.htm">刘师复</a>
+<a href="bajin/index.htm">巴金</a>
+<a href="david-graeber/index.htm">大卫·格雷伯</a>
+<a href="thomas-munzer/index.htm">闵采尔</a>
+<a href="blanqui/index.htm">布朗基</a>
+<a href="lassalle/index.htm">拉萨尔</a>
+<a href="liebknecht-k/index.htm">卡尔·李卜克内西</a>
+<a href="mehring/index.htm">梅林</a>
+<a href="otto-bauer/index.htm">奥托·鲍威尔</a>
+<a href="helphand-parvus/index.htm">帕尔乌斯</a>
+<a href="josef-dietzgen/index.htm">约瑟夫·狄慈根</a>
+<a href="kun-bela/index.htm">库恩·贝拉</a>
+<a href="thalmann/index.htm">台尔曼</a>
+<a href="georg-lukacs/index.htm">卢卡奇</a>
+<a href="pannekoek/index.htm">潘涅库克</a>
+<a href="korsch-karl/index.htm">科尔施</a>
+</div>
+</section>
+<div class="quote-box">
+        "全世界无产者，联合起来！" —— 《共产党宣言》
     </div>
-  </div>
-  
-  <!-- 导航栏 -->
-  <div class="nav-bar">
-    <div class="nav-container">
-      <a href="#" class="nav-link">网站首页</a>
-      <a href="https://ebook.dswxyjy.org.cn/ebooks/list/1" class="nav-link">经典著作</a>
-      <a href="#" class="nav-link" id="openAbout">关于我们</a>
-    </div>
-  </div>
-  
-  <!-- 主体内容 -->
-  <div class="main-container">
-    <!-- 详细介绍中文马克思主义文库 -->
-    <div class="content-section">
-      <h2 class="section-title"><i class="fas fa-book-open"></i> 马克思主义文库详细介绍</h2>
-      <div class="intro">
-        <p>
-          <strong>马克思主义文库</strong>（英语：Marxists Internet Archive，缩写为MIA），也译作马克思主义者互联网文库，是一个由志愿者建立的非营利性质的网络公共图书馆。该组织所维护的文库中包含马克思主义作家或相关左翼作家（社会主义者、无政府主义者等）纂写的多语言文献。
-        </p>
-        
-        <div class="intro-highlight">
-          <p>
-            该网站建立于1990年，是目前世界上最大的马克思主义作家文库，许多资料有英语、俄语、德语、意大利语、法语、希腊语、汉语等版本。2006年，文库网站月访问量为110万次，月文件下载量为1550万份，访问人数比2005年增加25%、比2000年增加380%。
-          </p>
-        </div>
-        
-        <p>
-          文库的建立、更新以及维护一直依赖于马克思主义的爱好者和志愿者。截至2007年，"马克思主义者互联网文库"已拥有来自33个不同国家的62位志愿者。
-        </p>
-        
-        <div class="source-link">
-          <p>信息来源：<a href="https://www.qiuwenbaike.cn/wiki/%E9%A9%AC%E5%85%8B%E6%80%9D%E4%B8%BB%E4%B9%89%E6%96%87%E5%BA%93" target="_blank">求闻百科 - 马克思主义文库</a></p>
-        </div>
-        
-        <h3>基本原则</h3>
-        <div class="principles-badges">
-          <div class="badge"><i class="fas fa-hand-holding-usd"></i> 100%免费原则</div>
-          <div class="badge"><i class="fas fa-university"></i> 非营利机构原则</div>
-          <div class="badge"><i class="fas fa-users"></i> 民主决策原则</div>
-          <div class="badge"><i class="fas fa-chart-line"></i> 财务公开原则</div>
-          <div class="badge"><i class="fas fa-balance-scale"></i> 政治中立原则</div>
-          <div class="badge"><i class="fas fa-archive"></i> 档案优先原则</div>
-        </div>
-        
-        <div class="btn-container">
-          <a href="/chinese/" class="btn-large">
-            <i class="fas fa-external-link-alt"></i> 访问完整文库
-          </a>
-        </div>
-      </div>
-    </div>
-    
-    <!-- 马克思语录部分 -->
-    <div class="content-section">
-      <h2 class="section-title"><i class="fas fa-quote-left"></i> 马克思语录</h2>
-      <div class="quotes-carousel">
-        <div class="quote-slide active">
-          <div class="quote-text">"哲学家们只是用不同的方式解释世界，而问题在于改变世界。"</div>
-          <div class="quote-author">—— 卡尔·马克思《关于费尔巴哈的提纲》</div>
-        </div>
-        <div class="quote-slide">
-          <div class="quote-text">"理论一经掌握群众，也会变成物质力量。理论只要说服人，就能掌握群众；而理论只要彻底，就能说服人。"</div>
-          <div class="quote-author">—— 卡尔·马克思《黑格尔法哲学批判》导言</div>
-        </div>
-        <div class="quote-slide">
-          <div class="quote-text">"无产阶级在这个革命中失去的只是锁链，他们获得的将是整个世界。"</div>
-          <div class="quote-author">—— 卡尔·马克思、恩格斯《共产党宣言》</div>
-        </div>
-        <div class="quote-slide">
-          <div class="quote-text">"批判的武器当然不能代替武器的批判，物质力量只能用物质力量来摧毁。"</div>
-          <div class="quote-author">—— 卡尔·马克思《黑格尔法哲学批判》导言</div>
-        </div>
-        <div class="quote-slide">
-          <div class="quote-text">"一步实际运动比一打纲领更重要。"</div>
-          <div class="quote-author">—— 卡尔·马克思《哥达纲领批判》</div>
-        </div>
-        <div class="carousel-indicators">
-          <div class="indicator active" data-index="0"></div>
-          <div class="indicator" data-index="1"></div>
-          <div class="indicator" data-index="2"></div>
-          <div class="indicator" data-index="3"></div>
-          <div class="indicator" data-index="4"></div>
-        </div>
-      </div>
-    </div>
-      
-    <!-- 横向联系方式 -->
-    <div class="contact-horizontal">
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
-        </div>
-        <div class="contact-details">
-          <h4>联系我们</h4>
-          <p class="contact-email">邮箱：marx@incn.su</p>
-          <p class="contact-role">如有任何问题，请通过此邮箱联系我们</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 关于我们弹窗 -->
-  <div class="modal-overlay" id="aboutModal">
-    <div class="modal">
-      <div class="modal-header">
-        <h2>关于我们</h2>
-        <button class="close-modal" id="closeAbout">&times;</button>
-      </div>
-      <div class="modal-content">
-        <p>
-          中文马克思主义文库旨在汇集、整理和传播马克思主义经典著作及相关理论资源，为研究者与学习者提供系统、权威的文献支持。
-        </p>
-        <p>
-          我们的使命是保存马克思主义思想遗产，促进马克思主义理论在中文世界的传播与发展。通过数字化技术，我们努力使这些宝贵的思想资源更加易于获取和研究。
-        </p>
-        <p>
-          本站由志愿者团队运营维护，所有资源免费向公众开放。我们欢迎学术界同仁、研究机构与我们合作，共同推进马克思主义理论的研究与传播。
-        </p>
-        <p>
-          本站为中文站，数据来源于国际站 www.marxists.org，但不一定完全相同。使用时应注意符合当地法律。
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 页脚 -->
-  <div class="footer">
-    <!-- 51la数据统计挂件 -->
-    <div class="stats-container">
-      <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3MMIkpQjaN9YuPlh/quote.js?theme=#333333,#FFFFFF,#FFFFFF,#CCCCCC,#666666,#FFFFFF,12&f=12"></script>
-    </div>
-    
-    <div class="copyright">
-      <p>中文马克思主义文库 | 本平台仅供学术研究使用</p>
-    </div>
-  </div>
-  
-  <script>
-    // 马克思语录轮播功能
-    const slides = document.querySelectorAll('.quote-slide');
-    const indicators = document.querySelectorAll('.indicator');
-    let currentSlide = 0;
-    
-    function showSlide(index) {
-      slides.forEach(slide => slide.classList.remove('active'));
-      indicators.forEach(ind => ind.classList.remove('active'));
-      slides[index].classList.add('active');
-      indicators[index].classList.add('active');
-      currentSlide = index;
+<section class="nav-section">
+<div class="nav-links">
+<a href="marx-engels/index.htm">《马克思恩格斯全集》</a>
+<a href="marx-engels2/index.htm">《马克思恩格斯文集（十卷）》</a>
+<a href="lenin-cworks/index.htm">《列宁全集》</a>
+<a href="history-of-communism/index.htm">《国际共产主义运动历史文献》</a>
+</div>
+</section>
+<section class="nav-section">
+<div class="nav-links">
+<a href="reference-books/index-leftwingculture.htm">左翼文化</a>
+<a href="reference-books/novel.htm">工人小说</a>
+<a href="reference-books/index-class-struggling.htm">阶级斗争文献</a>
+<a href="albums/index.htm">图片馆</a>
+</div>
+</section>
+<div class="bottom-text">
+<p>本网站属非谋利性质，旨在收录马克思主义和共产主义历史文献和参考资料。凡刊登的著作文献侵犯了作者、译者或版权持有人权益的，可来信联系本站删除。</p>
+<p>阅读本站资料时，如发现文字错漏或疑点，敬请读者告知文库，以便我们更正。深表感谢！</p>
+<p>内容来源自： <a href="https://www.marxists.org" target="_blank">www.marxists.org</a></p>
+<p>文库镜像站：<a href="https://marxist.top" target="_blank">marxist.top</a> ︱
+        <a href="https://marxists.su" target="_blank">marxists.su</a></p>
+<p>联系邮箱：<a href="mailto:marx@incn.su">marx@incn.su</a></p>
+</div>
+</div>
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"3MMIkpQjaN9YuPlh",ck:"3MMIkpQjaN9YuPlh"})</script>
+
+<!-- 争议人物访问提示弹窗 -->
+<div class="warning-modal" id="warningModal" style="display:none;position:fixed;z-index:99999;inset:0;background:rgba(0,0,0,.6);align-items:center;justify-content:center;">
+<div class="warning-content" style="background:#fff;padding:2rem;border-radius:10px;max-width:480px;width:92%;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.3);">
+<h2 class="warning-title" style="color:#8B0000;margin:0 0 1rem;">学术研究提示</h2>
+<div class="warning-text" style="color:#333;line-height:1.7;font-size:.95rem;">
+<p style="margin:.5rem 0;">您即将访问的内容涉及历史上存在争议的人物。</p>
+<p style="margin:.5rem 0;">本站收录这些资料仅供学术研究和历史参考使用。</p>
+</div>
+<div class="warning-buttons" style="margin-top:1.4rem;display:flex;gap:1rem;justify-content:center;">
+<button id="agreeBtn" style="padding:.55rem 1.1rem;border:none;border-radius:6px;background:#8B0000;color:#fff;cursor:pointer;">
+        我理解，继续访问
+      </button>
+<button id="disagreeBtn" style="padding:.55rem 1.1rem;border:none;border-radius:6px;background:#ddd;cursor:pointer;color:#333;">
+        取消访问
+      </button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  var SENSITIVE = new Set([
+    "linbiao","wangming","zhangguotao","pengshuzhi","chenbilan","zhengchaolin",
+    "wangfanxi","louguohua","chenqichang","yinkuan","wangduqing","liurenjing",
+    "caizhende","liji","wujiyan","kautsky","bernstein","bukharin","zinoviev","kamenev","radek"
+  ]);
+
+  var modal = document.getElementById("warningModal");
+  var agree = document.getElementById("agreeBtn");
+  var cancel = document.getElementById("disagreeBtn");
+  var pendingHref = null;
+
+  document.addEventListener("click", function(ev){
+    var a = ev.target.closest && ev.target.closest("a[href]");
+    if (!a) return;
+
+    var href = a.getAttribute("href") || "";
+    var u;
+    try {
+      u = new URL(href, location.href);
+      if (u.origin !== location.origin) return;
+      if (!/^https?:$/i.test(u.protocol)) return;
+    } catch(e){ return; }
+
+    var slug = u.pathname.replace(/^\/+/, "").split("/")[0] || "";
+    if (SENSITIVE.has(slug)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      pendingHref = href;
+      modal.style.display = "flex";
     }
-    
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        showSlide(index);
-      });
-    });
-    
-    function nextSlide() {
-      let next = currentSlide + 1;
-      if (next >= slides.length) next = 0;
-      showSlide(next);
-    }
-    
-    setInterval(nextSlide, 5000);
-    showSlide(0);
-    
-    // 关于我们弹窗处理
-    const aboutModal = document.getElementById('aboutModal');
-    const openAbout = document.getElementById('openAbout');
-    const closeAboutBtn = document.getElementById('closeAbout');
-    
-    function openModal() {
-      aboutModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-      aboutModal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-    openAbout.addEventListener('click', (e) => {
-      e.preventDefault();
-      openModal();
-    });
-    closeAboutBtn.addEventListener('click', closeModal);
-    aboutModal.addEventListener('click', (e) => {
-      if (e.target === aboutModal) closeModal();
-    });
-    
-    // 用户访问须知及免责声明
-    let targetHref = "";
-    const linksToConfirm = document.querySelectorAll('a[href^="/chinese/"]');
-    const agreementModal = document.getElementById('agreementModal');
-    const agreeBtn = document.getElementById('agreeBtn');
-    const disagreeBtn = document.getElementById('disagreeBtn');
-    const closeAgreementBtn = document.getElementById('closeAgreement');
-    
-    linksToConfirm.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        targetHref = link.getAttribute('href');
-        agreementModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-    
-    agreeBtn.addEventListener('click', () => {
-      agreementModal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-      window.open(targetHref, '_blank');
-    });
-    
-    disagreeBtn.addEventListener('click', () => {
-      alert("您选择不同意访问，系统将带您前往Bing。");
-      window.open("https://www.bing.com/", '_blank');
-    });
-    
-    closeAgreementBtn && closeAgreementBtn.addEventListener('click', () => {
-      agreementModal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    });
-  </script>
+  }, true);
+
+  agree.addEventListener("click", function(){
+    if (pendingHref) location.href = pendingHref;
+    modal.style.display = "none";
+  });
+
+  cancel.addEventListener("click", function(){
+    pendingHref = null;
+    modal.style.display = "none";
+  });
+
+  modal.addEventListener("click", function(e){
+    if (e.target === modal) { pendingHref = null; modal.style.display = "none"; }
+  });
+})();
+</script>
 </body>
 </html>
